@@ -4,8 +4,17 @@
 @tailwind utilities;
 
 /* purge start ignore */
-@layer base {
-
+.input {
+  @apply focus:ring-0 focus:border-gray-400;
+}
+.input-bordered {
+  @apply border-2;
+}
+.label {
+  @apply font-semibold;
+}
+.btn{
+  @apply font-bold;
 }
   
   /* purge end ignore */

@@ -12,7 +12,7 @@
 {/if} -->
 <!-- <Header/> -->
 <!-- <AlertList/> -->
-<main class="px-2 mx-auto  max-w-7xl sm:px-6 lg:px-8 ">
+<main class="px-2 mx-auto  max-w-7xl">
     <slot></slot>
 </main>
 <!-- <ModalBackdrop/> -->
