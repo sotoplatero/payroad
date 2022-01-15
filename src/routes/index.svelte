@@ -26,7 +26,7 @@ import Typewriter from 'svelte-typewriter'
       </h1> 
 
       <p class="mb-5 text-2xl text-gray-500 font-bold">
-        The easiest way to sell, just drag and drop your digital product.
+        The easiest way to sell in <strong>bitcoin</strong> or <a href="https://qvapay.com" class="link" target="_blank" rel="noopener nofollower"><strong>qvapay</strong></a>, just drag and drop your digital product.
       </p> 
 
       <label for="modal-index" class="btn btn-primary btn-outline border-4 btn-lg font-extrabold text-2xl">soon</label> 
