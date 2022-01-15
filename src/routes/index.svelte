@@ -33,7 +33,7 @@ import Typewriter from 'svelte-typewriter'
       <input type="checkbox" id="modal-index" class="modal-toggle"> 
       <div class="modal">
         <div class="modal-box">
-          <p>Enim dolorem dolorum omnis atque necessitatibus. Consequatur aut adipisci qui iusto illo eaque. Consequatur repudiandae et. Nulla ea quasi eligendi. Saepe velit autem minima.</p> 
+          <p class="text-lg">ok, I'm posting what I'm doing <strong>#buildinpublic</strong> follow me on <a href="https://twitter.com/sotoplatero" class="link">twitter</a> to comment and be the first to sell.</p> 
           <div class="modal-action flex justify-center">
             <label for="modal-index" class="btn btn-primary fotn">Accept</label> 
           </div>
