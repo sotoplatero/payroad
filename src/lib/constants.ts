@@ -1,7 +1,7 @@
 // Page Routes
 export const ROUTE_HOME = '/'
 export const ROUTE_AUTH = '/auth'
-export const ROUTE_PROFILE = '/profile'
+export const ROUTE_PROFILE = '/products'
 
 // API Routes
 export const API_AUTH = '/api/auth.json'

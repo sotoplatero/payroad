@@ -3,7 +3,7 @@
     import { auth } from '$lib/supabase'
     import { createQueryStore } from '$lib/utils/query'
     import Seo from '$lib/components/SEO.svelte'
-	import { handleAlert } from '$lib/alert'
+    import { handleAlert } from '$lib/alert'
     import Spinner from '$lib/components/Spinner.svelte'
 
     const regQuery = createQueryStore('reg')
@@ -29,7 +29,7 @@
 
         if (isSignIn) {
             const { error, session } = await auth.signIn({
-                email, password
+                email
             })
             if (error) {
                 handleAlert({ type: "error", text: error.message})
@@ -62,10 +62,11 @@
 </script>
 
 <Seo title={`Auth - ${isSignIn ? 'Log In' : 'Sign Up'}`} />
+
 <div class="flex flex-col justify-center items-center relative">
 <!-- <img src="/static/undraw_access_denied_re_awnf.svg" alt="" /> -->
 <!-- App logo and tagline -->
-<div class="w-full text-center mb-4 flex  flex-col place-items-center">
+<div class="w-full text-center mb-4 flex flex-col place-items-center">
     <div>
         <!-- <LockIcon size="3x" class="w-12 h-12 text-gray-600" /> -->
     </div>
@@ -77,10 +78,7 @@
 <!-- Sign Up form -->
 <form class="w-full sm:w-1/2 xl:w-5/12" on:submit|preventDefault={signUpOrSignIn} >
     <div class="border-teal p-8 border-t-12 bg-white mb-6 rounded-lg border">
-<!--     <button type="button" class="flex-1 bg-gray-200 text-green-700 py-3 rounded w-full text-center shadow" on:click|preventDefault={() => handleProviderSignIn('github')}>
-        <GithubIcon size="1x" class="inline-block "/> {isSignIn ? 'Log In' : 'Sign Up' } with <strong>Github</strong>
-    </button> -->
-    <!-- <hr class="my-4"/> -->
+
     <div class="mb-4">
         <label for="email" class="block font-semibold text-gray-800 mb-2 text-left">Email</label>
         <input
