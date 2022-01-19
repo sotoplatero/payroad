@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../global.css';
-    import { session, navigating } from '$app/stores'
+    import { navigating } from '$app/stores'
     import PageNavIndicator from '$lib/components/PageNavIndicator.svelte'
 	import Header from '$lib/components/Header.svelte'
 	import Footer from '$lib/components/Footer.svelte'

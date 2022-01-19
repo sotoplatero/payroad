@@ -10,40 +10,37 @@
 <script>
 	import {goto} from '$app/navigation'
 	import {from} from '$lib/supabase'
+	import {slugify} from '$lib/utils/slugify'
+	import FormProduct from '$lib/components/FormProduct.svelte'
+
+
 	export let user
-	let product = { title:'' , price:'', description: ''}
-	$:console.log(product)
-	async function save(){
-		const {error} = await from('products').insert({ user_id: user.id, data: product })
+
+	let title = ''
+	let price = ''
+	let description = ''
+
+	$: product = { title, price, description }
+
+	async function save() {
+		const {error} = await from('products').insert({ 
+			user_id: user.id, 
+			slug: slugify(title), 
+			data: { title, price, description } 
+		})
 		if (!error) {
 			goto('/products')
 		}
 	}
+
+
 </script>
 
 <div class="max-w-screen-sm mx-auto">
 	<h1>Create Product</h1>
-	<form on:submit|preventDefault={save}>
-		<div class="form-control">
-			<label for="title" class="label">title</label>
-			<input 
-				type="text" 
-				name="title" 
-				class="input input-bordered" 
-				bind:value={product.title}
-			>
-		</div>
-		<div class="form-control">
-			<label for="price" class="label">price</label>
-			<input bind:value={product.price} type="text" name="price" class="input input-bordered">
-		</div>
-		<div class="form-control">
-			<label for="description" class="label">description</label>
-			<textarea bind:value={product.description} name="description" class="input input-bordered" rows="5"></textarea>
-		</div>
-		<button class="btn btn-primary mt-4">
-			Create
-		</button>
-	</form>
+	<FormProduct 
+		bind:product 
+		on:submit={save}
+	/>
 	
 </div>

@@ -2,7 +2,7 @@
     import { page, session } from '$app/stores'
     import {user} from '$lib/stores/user'
 </script>
-<nav class=" h-14 bg-white w-screen mx-auto max-w-screen-lg mx-auto px-2" >
+<nav class=" h-14 w-screen mx-auto max-w-screen-lg mx-auto px-2" >
     <ul class="list-none h-full flex items-center justify-end gap-3 font-bold space-x-4">
         {#if $user && !$user.guest}
 
@@ -17,8 +17,9 @@
                 </a>
             </li>
             <li class="nav__item">
-                <a href="/account">
-                    <img class="w-7 h-7 rounded-full" src="https://unavatar.io/{$user.email}" alt="avatar">
+                <a href="/settings">
+                    <!-- <img class="w-7 h-7 rounded-full" src="https://unavatar.io/{$user.email}" alt="avatar"> -->
+                    Account
                 </a>
             </li>
             <!-- <button class="" on:click={() => signOut()}>Sign Out</button> -->

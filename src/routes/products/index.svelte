@@ -7,7 +7,7 @@
         if (!user?.id) return redirectToLogin
 
         const { data: products,error} = await from('products')
-		    .select('id,data')
+		    .select('id,slug,data')
 		    .eq('user_id', user.id)
 
 	 	if (error) return {fallthrough: true}
@@ -29,14 +29,14 @@
 	{#if products.length}
 
 		<div>
-			<a sveltekit:prefetch href="/product/create" class="btn btn-lg btn-accent w-92 ">
+			<a sveltekit:prefetch href="/product/create" class="btn btn-lg btn-primary w-92 ">
 				Add Product
 			</a>	
 		</div>
 		<div class="space-y-4 mt-8">
 			{#each products as product, index}
 				<div class="alert shadow flex items-center justify-between text-lg font-semibold">
-					<a href="/product/edit/{product.id}">
+					<a href="/product/edit/{product.id}-{product.slug}">
 						{product.data.title}
 					</a>
 					<button on:click={remove(product.id)}>

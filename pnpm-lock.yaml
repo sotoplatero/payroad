@@ -29,8 +29,8 @@ specifiers:
   svelte-check: ^2.3.0
   svelte-hero-icons: ^4.0.3
   svelte-preprocess: ^4.10.2
-  svelte-seo: ^1.3.1
-  svelte-typewriter: ^3.0.0-alpha.6
+  svelte-seo: ^1.4.0
+  svelte-typewriter: ^3.0.0-alpha.7
   tailwindcss: ^3.0.15
   tslib: ^2.3.1
   typescript: ^4.5.4
@@ -64,8 +64,8 @@ devDependencies:
   svelte-check: 2.3.0_7ff82f86d2b584ac3c0682d6a10f68b9
   svelte-hero-icons: 4.0.3
   svelte-preprocess: 4.10.2_710b513d204acccb6fab5a2e92cd973a
-  svelte-seo: 1.3.1_typescript@4.5.4
-  svelte-typewriter: 3.0.0-alpha.6_svelte@3.46.2
+  svelte-seo: 1.4.0_typescript@4.5.4
+  svelte-typewriter: 3.0.0-alpha.7_svelte@3.46.2
   tailwindcss: 3.0.15_ef48b3b8837f8a23677bffe8f9cd866d
   tslib: 2.3.1
   typescript: 4.5.4
@@ -164,8 +164,8 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@supabase/gotrue-js/1.21.7:
-    resolution: {integrity: sha512-YnL4cO3Q+ugatWEtgCEnLt+Wwi0VpOVTPSSjSSUho2x3cH7+juRBTrVbYky/W6YVgAw/ZJrVUFPh/NcUCUhdmw==}
+  /@supabase/gotrue-js/1.22.0:
+    resolution: {integrity: sha512-6r8YJvl8+mEBO6a5xoFr9K0kVw7C0FmcudFFAop+2FNSo6BXR/eEsPx/yAgVgv+1GowG4n2kOm0TYB7EvcH2QQ==}
     dependencies:
       cross-fetch: 3.1.4
     dev: true
@@ -192,7 +192,7 @@ packages:
   /@supabase/supabase-js/1.29.2:
     resolution: {integrity: sha512-zyURfsWxGeuVQd4QfqeSyzhpplYIQznL92mATcb8uUjnoXRC+oDiVQ3Ak5mtFJlPPT1tRwEWTr5o9fr0AncOcg==}
     dependencies:
-      '@supabase/gotrue-js': 1.21.7
+      '@supabase/gotrue-js': 1.22.0
       '@supabase/postgrest-js': 0.35.1
       '@supabase/realtime-js': 1.3.5
       '@supabase/storage-js': 1.5.1
@@ -3325,16 +3325,16 @@ packages:
       typescript: 4.5.4
     dev: true
 
-  /svelte-seo/1.3.1_typescript@4.5.4:
-    resolution: {integrity: sha512-lLmTrRRxcoRUtwU/d2lACCGf/mpMTxuDIItCshUBaWxW1gCFcE8SA09kOsKX+8vbZryqWNtf9Lvw+HACTHQk/g==}
+  /svelte-seo/1.4.0_typescript@4.5.4:
+    resolution: {integrity: sha512-44kvY3+t8QBjjQPlKIXXRSgp+XzV0OBO4qLs0T3nx7lzgxVzmDI1G+nAgrSYXMbmZAZmmvZGpZpbUBTJckM0Lw==}
     dependencies:
       schema-dts: 0.8.3_typescript@4.5.4
     transitivePeerDependencies:
       - typescript
     dev: true
 
-  /svelte-typewriter/3.0.0-alpha.6_svelte@3.46.2:
-    resolution: {integrity: sha512-lI1+t2tRTv2+A1W5unRwwDh2ioddeje2O4kElAkMpQWriBpkjpbJPomJQQxL/tGgmBfPTtk+S3/AuxQiISdwFw==}
+  /svelte-typewriter/3.0.0-alpha.7_svelte@3.46.2:
+    resolution: {integrity: sha512-n+pkMhTOD9FdkbIOwe+Szy5l+27SuaVEO+gONP6Fu96jA/wu65Hxarq4r0/nBNgrUBarkBz+SEsqSXC4sbuXaA==}
     peerDependencies:
       svelte: '>=3.28.x'
     dependencies:

@@ -4,10 +4,13 @@
 @tailwind utilities;
 
 /* purge start ignore */
-.input {
+h1{ 
+  @apply text-3xl font-bold text-center;
+}
+.input,.textarea {
   @apply focus:ring-0 focus:border-gray-400 text-lg;
 }
-.input-bordered, .btn-outline {
+.input-bordered, .textarea-bordered, .btn-outline {
   @apply border-2;
 }
 .label {
@@ -16,5 +19,5 @@
 .btn{
   @apply font-bold;
 }
-  
+
   /* purge end ignore */

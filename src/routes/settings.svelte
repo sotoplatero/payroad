@@ -7,9 +7,9 @@
     }
 </script>
 <div>
-    <h1>Edit Acount</h1>
+    <h1>Settings</h1>
     <div class="text-center">
-        <button class="btn btn-error btn-outline" on:click={signOut}>
+        <button class="btn btn-error btn-outline btn-lg w-full" on:click={signOut}>
         	Exit
         </button>
     </div>
