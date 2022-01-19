@@ -1,15 +1,28 @@
-<script>
-	import {from} from '$lib/supabase'
-	import {user} from '$lib/user.store'
-
-	let product = { title:'' , price:'', description: '', user_id: $user.id }
-
-	async function save(){
-		const {error} = await from('products').insert({ data: product })
-		console.log(error)
+<script context="module">
+    import { redirectToLogin } from '$lib/config/app'
+	export async function load({ url, fetch, session }) {
+        const { user } = session
+        if (!user?.id) return redirectToLogin	
+        return { props: { user}}        	
 	}
 </script>
+
+<script>
+	import {goto} from '$app/navigation'
+	import {from} from '$lib/supabase'
+	export let user
+	let product = { title:'' , price:'', description: ''}
+	$:console.log(product)
+	async function save(){
+		const {error} = await from('products').insert({ user_id: user.id, data: product })
+		if (!error) {
+			goto('/products')
+		}
+	}
+</script>
+
 <div class="max-w-screen-sm mx-auto">
+	<h1>Create Product</h1>
 	<form on:submit|preventDefault={save}>
 		<div class="form-control">
 			<label for="title" class="label">title</label>
@@ -26,9 +39,9 @@
 		</div>
 		<div class="form-control">
 			<label for="description" class="label">description</label>
-			<textarea bind:value={product.description} name="description" class="input input-bordered"></textarea>
+			<textarea bind:value={product.description} name="description" class="input input-bordered" rows="5"></textarea>
 		</div>
-		<button class="btn">
+		<button class="btn btn-primary mt-4">
 			Create
 		</button>
 	</form>

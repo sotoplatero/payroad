@@ -63,7 +63,7 @@
 
 <Seo title={`Auth - ${isSignIn ? 'Log In' : 'Sign Up'}`} />
 
-<div class="flex flex-col justify-center items-center relative">
+<div class="flex justify-center items-center relative">
 <!-- <img src="/static/undraw_access_denied_re_awnf.svg" alt="" /> -->
 <!-- App logo and tagline -->
 <div class="w-full text-center mb-4 flex flex-col place-items-center">

@@ -5,8 +5,8 @@ import Typewriter from 'svelte-typewriter'
 
 <SEO/>
 
-<div class="hero min-h-screen">
-  <div class="text-center">
+<div class="hero ">
+  <div class="text-center ">
     <div class="max-w-lg ">
       <div class="uppercase text-2xl">
         payroad<span class="text-indigo-600">&bull;</span>click

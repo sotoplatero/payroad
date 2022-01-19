@@ -1,20 +1,22 @@
 <script lang="ts">
 	import '../global.css';
-    import { navigating } from '$app/stores'
+    import { session, navigating } from '$app/stores'
     import PageNavIndicator from '$lib/components/PageNavIndicator.svelte'
 	import Header from '$lib/components/Header.svelte'
-	// import Footer from '$lib/components/Footer.svelte'
-	// import AlertList from '$lib/alert/AlertList.svelte'
+	import Footer from '$lib/components/Footer.svelte'
+	import AlertList from '$lib/alert/AlertList.svelte'
 </script>
 
 {#if $navigating}
 	<PageNavIndicator />
 {/if}
-<Header/>
-<!-- <AlertList/> -->
-<main class="px-2 mx-auto  max-w-7xl">
-    <slot></slot>
-</main>
+<div class="min-h-screen">
+	<Header/>
+	<AlertList/>
+	<main class="py-20 px-2 mx-auto w-full max-w-prose grow">
+	    <slot></slot>
+	</main>
+</div>
 <!-- <ModalBackdrop/> -->
-<!-- <Footer/> -->
+<Footer/>
 

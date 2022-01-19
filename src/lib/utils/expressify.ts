@@ -1,26 +1,38 @@
-import * as cookie from 'cookie'
+import * as cookie from 'cookie';
 
-export function expressifyReq(req) {
-    return {
-        ...req,
-        cookies: cookie.parse(req.headers.cookie || '')
-    }
+/**
+ * Converts a SvelteKit request to a Express compatible request.
+ * Supabase expects the cookies to be parsed.
+ * @param {SvelteKit.Request} req
+ * @returns Express.Request
+ */
+export function toExpressRequest(req) {
+  return {
+    ...req,
+    cookies: cookie.parse(req.headers.cookie || '')
+  };
 }
 
-export function expressifyResp(resp) {
-    return {
-        ...resp,
-        getHeader: (header) => resp.headers[header.toLowerCase()],
-        setHeader: (header, value) => resp.headers[header.toLowerCase()] = value,
-        status: (p) => ({json: (p) => {}})
-    }
+/**
+ * Converts a SvelteKit response into an Express compatible response.
+ * @param {SvelteKit.Response} resp
+ * @returns Express.Response
+ */
+export function toExpressResponse(resp) {
+  return {
+    ...resp,
+    getHeader: (header) => resp.headers[header.toLowerCase()],
+    setHeader: (header, value) => (resp.headers[header.toLowerCase()] = value),
+    status: (_) => ({ json: (_) => {} })
+  };
 }
 
-export function deExpressifyResp(resp) {
-    const {
-        getHeader,
-        setHeader,
-        ...returnAbleResp
-    } = resp
-    return returnAbleResp
+/**
+ * Converts an Express style response to a SvelteKit compatible response
+ * @param {Express.Response} resp
+ * @returns SvelteKit.Response
+ */
+export function toSvelteKitResponse(resp) {
+  const { getHeader, setHeader, ...returnAbleResp } = resp;
+  return returnAbleResp;
 }

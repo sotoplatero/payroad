@@ -12,20 +12,20 @@ export async function get({ params }) {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json'},
 		body:  JSON.stringify({ 
-			 "name": "Bitcoin shop",
+			 "name": "PayRoad",
 			 "secret_key": key,
 			 "password": passMD5,
-			 "type": "bitcoin",
-			 "amount": 0.0003456,
+			 "type": "all",
+			 "amount": 40,
 			 "order_id": "Order10001",
 			 "currency": "USD",
 			 "description": "Payment for t-shirt ALFAcoins size XXL",
 			 "options": {
-				 "notificationURL": "https://www.alfacoinshop.com/notification.php",
-				 "redirectURL": "https://www.alfacoinshop.com/my/orders/success",
+				 "notificationURL": "https://payroad.click/notification.php",
+				 "redirectURL": "https://payroad.click/my/orders/success",
 				 "payerName": "Victor",
 				 "payerEmail": "no_reply@alfacoins.com",
-				 "test": 1,
+				 // "test": 1,
 				 "status": "completed"
 			 }
 		 })

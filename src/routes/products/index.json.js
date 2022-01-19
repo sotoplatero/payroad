@@ -1,4 +1,4 @@
-import db from '$lib/database';
+import {from} from '$lib/supabase';
 
 /** @type {import('@sveltejs/kit').RequestHandler} */
 export async function get({ params }) {

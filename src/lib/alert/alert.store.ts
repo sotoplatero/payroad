@@ -6,7 +6,7 @@ export const alerts = writable<Array<Alert>>([])
 
 export const handleAlert = (alert: Alert): void => {
     alerts.update(alerts => alerts.concat([alert]))
-    clearAlertTimeout()
+    // clearAlertTimeout()
 }
 
 export const clearAlert = () => alerts.update(alerts => alerts.slice(1))

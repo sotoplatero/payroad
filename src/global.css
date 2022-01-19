@@ -5,9 +5,9 @@
 
 /* purge start ignore */
 .input {
-  @apply focus:ring-0 focus:border-gray-400;
+  @apply focus:ring-0 focus:border-gray-400 text-lg;
 }
-.input-bordered {
+.input-bordered, .btn-outline {
   @apply border-2;
 }
 .label {

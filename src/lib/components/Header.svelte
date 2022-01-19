@@ -8,14 +8,14 @@
     }
 </script>
 
-<header class="w-full">
+<header class="sticky top-0 w-full">
     <NavBar />
 
     {#if isNavOpened}
         <Navigation {toggleNav} />
     {/if}
-    <button on:click={toggleNav}>
+<!--     <button on:click={toggleNav}>
         Menu
-    </button>
+    </button> -->
     <slot/>
 </header>
