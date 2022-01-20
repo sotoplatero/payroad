@@ -9,7 +9,7 @@
 <div>
     <h1>Edit Acount</h1>
     <div class="text-center">
-        <button class="btn btn-error btn-outline" on:click={signOut}>
+        <button class="btn btn-error w-full btn-outline" on:click={signOut}>
         	Exit
         </button>
     </div>
