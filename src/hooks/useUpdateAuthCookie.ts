@@ -9,8 +9,10 @@ export const useUpdateAuthCookie = async ({ request, resolve }) => {
   const { user } = await auth.api.getUserByCookie(expressStyleRequest);
   // console.log(await auth.api.getUserByCookie(expressStyleRequest))
   // Add the user and the token to our locals so they are available on all SSR pages
-  request.locals.token = expressStyleRequest.cookies['sb:token'] || undefined;
   request.locals.user = user || { guest: true };
+  request.locals.token = expressStyleRequest.cookies['sb:token'] || undefined;
+  console.log('HOOK:')
+  console.log(user)
 
   // If we have a token, set the supabase client to use it so we can make authorized requests as that user
   if (request.locals.token) {

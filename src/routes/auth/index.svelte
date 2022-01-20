@@ -2,7 +2,8 @@
     import { redirectToProfile } from '$lib/config/app'
 
     /** @type {import('@sveltejs/kit').Load} */
-    export async function load({  fetch, session }) {
+    export async function load({  url,fetch, session }) {
+        console.log(url)
         const { user } = session
         // console.log(session)
         if (!!user?.id) return redirectToProfile
