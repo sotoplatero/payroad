@@ -1,10 +1,12 @@
 <script lang="ts">
     import { page, session } from '$app/stores'
     import {user} from '$lib/stores/user'
+
+    // $: { user } = session
 </script>
 <nav class=" h-14 w-screen mx-auto max-w-screen-lg mx-auto px-2" >
     <ul class="list-none h-full flex items-center justify-end gap-3 font-bold space-x-4">
-        {#if $user && !$user.guest}
+        {#if $user }
 
             <li class="nav__item">
                 <a rel="prefetch" href="/settings" class:active={$page.url.pathname === '/settings'}>

@@ -13,6 +13,9 @@ h1{
 .input-bordered, .textarea-bordered, .btn-outline {
   @apply border-2;
 }
+.btn-primary, .btn-secondary {
+  @apply text-white;
+}
 .label {
   @apply font-semibold;
 }
