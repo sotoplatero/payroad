@@ -15,7 +15,6 @@
     import { auth } from '$lib/supabase'
     import { handleAlert } from '$lib/alert'
     import Seo from '$lib/components/SEO.svelte'
-    import Spinner from '$lib/components/Spinner.svelte'
     import FormAuth from '$lib/forms/FormAuth.svelte'
 
     let loading = false

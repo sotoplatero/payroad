@@ -2,9 +2,9 @@
     import { page, session } from '$app/stores'
     import {user} from '$lib/stores/user'
 
-    // $: { user } = session
+    // $: console.log($user)
 </script>
-<nav class=" h-14 w-screen mx-auto max-w-screen-lg mx-auto px-2" >
+<nav class=" h-14 w-screen mx-auto max-w-screen-lg mx-auto px-2 bg-white" >
     <ul class="list-none h-full flex items-center justify-end gap-3 font-bold space-x-4">
         {#if $user }
 

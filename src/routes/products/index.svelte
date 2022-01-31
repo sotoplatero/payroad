@@ -4,9 +4,9 @@
 
 	export async function load({ url, fetch, session }) {
         const { user } = session
-        if (!user?.id) return redirectToLogin
+        if (!user) return redirectToLogin
 
-        const { data: products,error} = await from('products')
+        const { data: products, error } = await from('products')
 		    .select('id,slug,data')
 		    .eq('user_id', user.id)
 

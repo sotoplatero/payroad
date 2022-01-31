@@ -1,4 +1,4 @@
-const constructCookies = (session) => {
+export const constructCookies = (session) => {
   let cookieOptions = `Path=/;HttpOnly;Secure;SameSite=Strict;Expires=${new Date(session.expires_at * 1000).toUTCString()};`
 
   return {

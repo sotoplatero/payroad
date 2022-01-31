@@ -5,7 +5,6 @@
     export async function load({  url, fetch, session }) {
         const { user } = session
         console.log(session)
-        
         if (user) return redirectToProfile
         return { }
     }   
@@ -19,6 +18,7 @@
 
     let loading = false
     let email = ''
+    const SITE_URL = import.meta.env.VITE_SITE_URL
 
 
     async function signIn() {

@@ -1,5 +1,6 @@
 <script>
     import {page} from '$app/stores'
+    import Spinner from '$lib/components/Spinner.svelte'    
     export let email
     export let password
     export let loading
