@@ -2,24 +2,22 @@
 import { toExpressRequest, toExpressResponse, toSvelteKitResponse } from '$lib/utils/expressify'
 import {auth} from '$lib/supabase'
 
-export const useUpdateAuthCookie = async ({ request, resolve }) => {
-  // Parses `req.headers.cookie` adding them as attribute `req.cookies, as `auth.api.getUserByCookie` expects parsed cookies on attribute `req.cookies`
-  const expressStyleRequest = toExpressRequest(request);
+export const useUpdateAuthCookie = async ({ event, resolve }) => {
+
+  const { request } = event
   // We can then fetch the authenticated user using this cookie
-  const { user } = await auth.api.getUserByCookie(expressStyleRequest);
-  // console.log(await auth.api.getUserByCookie(expressStyleRequest))
+  expressRequest = toExpressRequest(request)
+  const { user } = await auth.api.getUserByCookie( expressRequest );
   // Add the user and the token to our locals so they are available on all SSR pages
-  request.locals.user = user || { guest: true };
-  request.locals.token = expressStyleRequest.cookies['sb:token'] || undefined;
-  console.log('HOOK:')
-  console.log(user)
+  event.locals.user = user;
+  event.locals.token = expressRequest.cookies['sb:token']
 
   // If we have a token, set the supabase client to use it so we can make authorized requests as that user
-  if (request.locals.token) {
-    auth.setAuth(request.locals.token);
+  if (event.locals.token) {
+    auth.setAuth(event.locals.token);
   }
 
-  let response = await resolve(request);
+  let response = await resolve(event);
 
   // if auth request - set cookie in response headers
   if (request.method == 'POST' && request.url.pathname === '/api/auth.json') {

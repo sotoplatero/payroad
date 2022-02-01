@@ -63,5 +63,9 @@
 		"*.+(js|json|ts|svelte)": [
 			"yarn run format"
 		]
+	},
+	"dependencies": {
+		"@auth0/auth0-spa-js": "^1.19.4",
+		"auth0-lock": "^11.32.0"
 	}
 }

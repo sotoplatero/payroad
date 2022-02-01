@@ -9,7 +9,7 @@ import * as cookie from 'cookie';
 export function toExpressRequest(req) {
   return {
     ...req,
-    cookies: cookie.parse(req.headers.cookie || '')
+    cookies: cookie.parse(req.headers.get('cookie') || '')
   };
 }
 
@@ -21,8 +21,8 @@ export function toExpressRequest(req) {
 export function toExpressResponse(resp) {
   return {
     ...resp,
-    getHeader: (header) => resp.headers[header.toLowerCase()],
-    setHeader: (header, value) => (resp.headers[header.toLowerCase()] = value),
+    getHeader: (header) => resp.headers.get( header.toLowerCase() ),
+    setHeader: (header, value) => resp.headers.set( header.toLowerCase(), value ),
     status: (_) => ({ json: (_) => {} })
   };
 }
