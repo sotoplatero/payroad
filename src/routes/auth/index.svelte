@@ -2,11 +2,10 @@
     import { redirectToProfile } from '$lib/config/app'
 
     /** @type {import('@sveltejs/kit').Load} */
-    export async function load({  url,fetch, session }) {
-        console.log(url)
+    export async function load({  url, fetch, session }) {
         const { user } = session
-        // console.log(session)
-        if (!!user?.id) return redirectToProfile
+        console.log(session)
+        if (user) return redirectToProfile
         return { }
     }   
 </script>
@@ -19,6 +18,8 @@
 
     let loading = false
     let email = ''
+    const SITE_URL = import.meta.env.VITE_SITE_URL
+
 
     async function signIn() {
         loading = true
@@ -37,37 +38,28 @@
 
 <Seo title={`Auth - Send me a Magic Link'}`} />
 
-<div class="flex justify-center">
-    <div class="w-full max-w-sm mx-auto">
-        
-        <div class="w-full text-center mb-4 place-items-center">
-            <h3 class="text-4xl text-blue-500 font-bold uppercase">
-                <a href="/">PayRoad<span class="text-red-500">&bull;</span>click</a>
-            </h3>
-        </div>
 
-        <form class="" on:submit|preventDefault={signIn} >
 
-            <div class="form-control">
-                <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    class="input input-bordered text-gray-600 text-center"
-                    placeholder="Your Email"
-                    required
-                    bind:value={email}
-                />
-            </div>
+<form class="" on:submit|preventDefault={signIn} >
 
-            <div class="mt-4">
-                <button type="submit" class="btn w-full flex items-center ">
-                    {#if loading}
-                        <Spinner class="mr-2"/>
-                    {/if}
-                    {'Send me a Magic Link'}
-                </button>
-            </div>
-        </form>
+    <div class="form-control">
+        <input
+            id="email"
+            name="email"
+            type="email"
+            class="input input-bordered text-gray-600 text-center"
+            placeholder="Your Email"
+            required
+            bind:value={email}
+        />
     </div>
-</div>
+
+    <div class="mt-4">
+        <button type="submit" class="btn w-full flex items-center ">
+            {#if loading}
+                <Spinner class="mr-2"/>
+            {/if}
+            {'Send me a Magic Link'}
+        </button>
+    </div>
+</form>

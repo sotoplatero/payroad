@@ -1,6 +1,6 @@
 <script lang="ts">
     import Navigation from './Navigation.svelte'
-    // import NavBar from './NavBar.svelte'
+    import NavBar from './NavBar.svelte'
     let isNavOpened = false
 
     function toggleNav() {
@@ -9,7 +9,7 @@
 </script>
 
 <header class="sticky top-0 w-full">
-    <!-- <NavBar /> -->
+    <NavBar />
 
     {#if isNavOpened}
         <Navigation {toggleNav} />

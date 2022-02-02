@@ -22,7 +22,7 @@
 
 <script>
 	import {slugify} from '$lib/utils/slugify'
-	import FormProduct from '$lib/components/FormProduct.svelte'
+	import FormProduct from '$lib/forms/FormProduct.svelte'
 
 	export let product
 	export let user
@@ -44,7 +44,7 @@
 		<a href="/{slug}" target="_blank" class="btn btn-outline btn-primary">View</a>
 	</header>
 	<FormProduct 
-		bind:product 
+		bind:product={product.data}
 		on:submit={save}
 	/>
 	

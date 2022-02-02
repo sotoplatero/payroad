@@ -3,14 +3,15 @@
     import {from} from '$lib/supabase'
 
 	export async function load({ url, fetch, session }) {
+		
         const { user } = session
-        if (!user?.id) return redirectToLogin
+        if (!user) return redirectToLogin
 
-        const { data: products,error} = await from('products')
+        const { data: products, error } = await from('products')
 		    .select('id,slug,data')
 		    .eq('user_id', user.id)
 
-	 	if (error) return {fallthrough: true}
+	 	if (error) return { fallthrough: true }
 
         return { props: { products } }
 	}

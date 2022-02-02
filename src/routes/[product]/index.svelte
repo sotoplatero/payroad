@@ -11,7 +11,13 @@
 		    .single()
 
         // console.log(product)
-        return { props: { product } }        	
+        return { props: { 
+        	product: {
+        		...product,
+        		...product.data,
+        		data: undefined,
+        	}
+        }}        	
 	}
 </script>
 
@@ -21,5 +27,6 @@
 </script>
 
 <div class="prose prose-lg mx-auto" data-theme="retro">
-	<h1 class="mt-10">{product.data.title}</h1>
+	<h1 class="mt-10">{product.title}</h1>
+	{@html product.description}
 </div>

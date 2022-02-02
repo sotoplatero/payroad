@@ -9,7 +9,7 @@ import * as cookie from 'cookie';
 export function toExpressRequest(req) {
   return {
     ...req,
-    cookies: cookie.parse(req.headers.get('cookie') || '')
+    cookies: cookie.parse( req.headers.get('cookie') || '' )
   };
 }
 
@@ -33,6 +33,11 @@ export function toExpressResponse(resp) {
  * @returns SvelteKit.Response
  */
 export function toSvelteKitResponse(resp) {
-  const { getHeader, setHeader, ...returnAbleResp } = resp;
+  const { 
+    getHeader, 
+    setHeader, 
+    ...returnAbleResp 
+  } = resp;
+
   return returnAbleResp;
 }

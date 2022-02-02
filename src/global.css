@@ -5,16 +5,19 @@
 
 /* purge start ignore */
 h1{ 
-  @apply text-3xl font-bold text-center;
+  @apply text-3xl font-bold text-center text-zinc-600;
 }
 .input,.textarea {
-  @apply focus:ring-0 focus:border-gray-400 text-lg;
+  @apply focus:ring-0 focus:border-stone-400 text-lg;
 }
 .input-bordered, .textarea-bordered, .btn-outline {
   @apply border-2;
 }
+.btn-primary, .btn-secondary {
+  @apply text-white;
+}
 .label {
-  @apply font-semibold;
+  @apply font-semibold text-stone-500;
 }
 .btn{
   @apply font-bold;

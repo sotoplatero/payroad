@@ -9,6 +9,6 @@
 </div>
 <style lang="postcss">
     .alert__list {
-        @apply absolute w-screen top-6 flex flex-col place-items-center justify-center z-10;
+        @apply w-full flex flex-col place-items-center justify-center z-10;
     }
 </style>
