@@ -37,9 +37,9 @@
 
 <Seo title={`Auth - Send me a Magic Link'}`} />
 
-
-
-<form class="" on:submit|preventDefault={signIn} >
+<h1>Join to Sell in Crypto</h1>
+<p class="text-center mt-4">Receive an access link, goodbye to passwords</p>
+<form class="mt-10" on:submit|preventDefault={signIn} >
 
     <div class="form-control">
         <input
@@ -53,7 +53,7 @@
         />
     </div>
 
-    <div class="mt-4">
+    <div class="mt-6">
         <button type="submit" class="btn w-full flex items-center ">
             {#if loading}
                 <Spinner class="mr-2"/>
