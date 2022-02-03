@@ -105,7 +105,7 @@
 
 <style>
   button{
-    @apply py-2 px-3 font-semibold;
+    @apply py-1 px-3 font-semibold;
   }
   button.active { 
     @apply bg-stone-300;

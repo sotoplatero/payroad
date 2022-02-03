@@ -4,6 +4,7 @@
     /** @type {import('@sveltejs/kit').Load} */
     export async function load({  url, fetch, session }) {
         const { user } = session
+        console.log('LOAD ->' + JSON.stringify(user))
         if (user) return redirectToProfile
         return { }
     }   

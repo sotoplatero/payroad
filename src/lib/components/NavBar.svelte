@@ -1,11 +1,13 @@
 <script lang="ts">
     import { page, session } from '$app/stores'
     import {user} from '$lib/stores/user'
+    import Logo from '$lib/components/Logo.svelte'
 
     // $: console.log($user)
     $: pathname = $page.url.pathname
 </script>
-<nav class=" h-14 w-screen mx-auto max-w-screen-lg mx-auto px-2 bg-white" >
+<nav class="flex items-center justify-between h-14 w-screen mx-auto max-w-screen-lg mx-auto px-2 bg-white" >
+    <Logo class="h-6"/>
     <ul class="list-none h-full flex items-center justify-end gap-3 font-bold space-x-4">
         {#if $user }
 
