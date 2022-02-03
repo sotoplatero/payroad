@@ -1,9 +1,14 @@
-export const constructCookies = (session) => {
-  let cookieOptions = `Path=/;HttpOnly;Secure;SameSite=Strict;Expires=${new Date(session.expires_at * 1000).toUTCString()};`
+export const constructCookies = ({
+    refresh_token,
+    access_token,
+    expires_in
+  }) => {
+  const expire = new Date( new Date().getTime() + expires_in ).toUTCString()
+  let cookieOptions = `Path=/;HttpOnly;Secure;SameSite=Strict;Expires=${expire};`
 
   return {
-    refresh_token: `refresh_token=${session.refresh_token};${cookieOptions}`,
-    access_token: `access_token=${session.access_token};${cookieOptions}`,
-    expires_at: `expires_at=${session.expires_at};${cookieOptions}`
+    refresh_token: `refresh_token=${refresh_token};${cookieOptions}`,
+    access_token: `access_token=${access_token};${cookieOptions}`,
+    expires_in: `expires_in=${expires_in};${cookieOptions}`
   }
 }
