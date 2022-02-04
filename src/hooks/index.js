@@ -9,16 +9,20 @@ async function end({ event, resolve }) {
 
 	// if (access_token) {
 	// }
-	console.log(event.request)
+	
+	console.log(event.request.headers.get('cookie'))
 	event.locals.user = access_token ? (await auth.api.getUser(access_token)).user : false
-	console.log('hook ->' + JSON.stringify(event.locals.user))
-	return await resolve(event);
+	const result = await resolve(event);
+
+	// console.log(result)
+
+	return result
 }
 
 export const handle = sequence(end);
 
 /** @type {import('@sveltejs/kit').GetSession} */
 export function getSession(event) {
-	console.log('getSession ->' + JSON.stringify(event.locals.user))
+	// console.log('getSession ->' + JSON.stringify(event.locals.user))
 	return event.locals
 }

@@ -4,7 +4,6 @@
     /** @type {import('@sveltejs/kit').Load} */
     export async function load({  url, fetch, session }) {
         const { user } = session
-        console.log('LOAD ->' + JSON.stringify(user))
         if (user) return redirectToProfile
         return { }
     }   
@@ -39,7 +38,7 @@
 <Seo title={`Auth - Send me a Magic Link'}`} />
 
 <h1>Join to Sell in Crypto</h1>
-<p class="text-center mt-4">Receive an access link, goodbye to passwords</p>
+<p class="text-center mt-4 text-stone-500">Receive an access link, goodbye to passwords</p>
 <form class="mt-10" on:submit|preventDefault={signIn} >
 
     <div class="form-control">

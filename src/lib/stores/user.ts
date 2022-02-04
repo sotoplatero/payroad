@@ -6,24 +6,31 @@ import type{ AuthChangeEvent, Session } from '@supabase/supabase-js'
 import { ROUTE_AUTH, ROUTE_PROFILE } from '$lib/config/app'
 
 export const user = readable( auth.user(), set => {
-    console.log()
     auth.onAuthStateChange( async (event, session) => {
         if (event == 'SIGNED_IN') {
             set(session.user )
             await setServerSession(session);
-            goto(ROUTE_PROFILE)
+            try{
+                goto('/products')
+            } catch(e) {
+                console.log(e)
+            }
         }
 
         if (event == 'SIGNED_OUT') {
+            console.log(event)
             set(null)
             await setServerSession({});
-            goto(ROUTE_AUTH)
+            try{
+                goto('/auth')
+            } catch(e) {
+                console.log(e)
+            }
         }
     })
 })
 
 async function setServerSession( session ) {
-    console.log(session)
     await fetch('/auth.json', {
         method: 'POST',
         body: JSON.stringify(session)

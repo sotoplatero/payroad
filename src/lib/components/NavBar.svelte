@@ -24,7 +24,7 @@
 
         {:else}
             <li>
-                <a sveltekit:prefetch href="/auth">
+                <a href="/auth">
                     Sign In
                 </a>
             </li>
