@@ -30,4 +30,4 @@ export const from = (table: SupaTable) => supabaseClient.from(table)
  * @param bucket The Supabase storage bucket to act upon
  * @returns
  */
-export const fromBucket = (bucket: SupaStorageBucket) => supabaseClient.storage.from(bucket)
+export const bucket = (bucket: SupaStorageBucket) => supabaseClient.storage.from(bucket)

@@ -18,12 +18,12 @@
 	<title>{status}</title>
 </svelte:head>
 
-<div class="col-md-9">
+<div class="text-center">
 	<h1>{status}</h1>
 
 	<p>{error.message}</p>
 
-	{#if dev && error.stack}
-		<pre>{error.stack}</pre>
-	{/if}
 </div>
+{#if dev && error.stack}
+	<pre>{error.stack}</pre>
+{/if}

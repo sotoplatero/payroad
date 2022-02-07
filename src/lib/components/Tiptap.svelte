@@ -100,7 +100,7 @@
     </div>
   {/if}
 
-  <div bind:this={element} />
+  <div bind:this={element} class="bg-white"/>
 </div>
 
 <style>

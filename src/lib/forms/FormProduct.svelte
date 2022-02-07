@@ -1,40 +1,73 @@
 <script>
+	import { from } from '$lib/supabase'
+	import {kebabCase,debounce} from 'lodash'
+	// import { slugify } from '$lib/utils/slugify'
+	import { session } from '$app/stores'
 	import Tiptap from '$lib/components/Tiptap.svelte'	
-	export let product = { title:'', price:'', description:'' }
+
+	export let product = { }
+
+	$: product.user_id = $session.user.id
 	$: product = product
+
+	const setSlug = debounce( 
+		async e => {
+			const slug = kebabCase(product.title)
+
+			const { error, count } = await from('products')
+			  .select('id', { count: 'exact', head: true  }) 	
+			  .like('slug',`${slug}%`)
+
+			product.slug = count ? slug + parseInt(count) + 1 : slug
+
+		}, 100 )
 </script>
 
-<form on:submit|preventDefault class="space-y-4">
+<div class="card bg-white">
+	
+	<form on:submit|preventDefault class="card-body space-y-4">
 
-	<div class="form-control">
-		<label for="title" class="label">Title</label>
-		<input 
-			type="text" 
-			name="title" 
-			class="input input-bordered" 
-			bind:value={product.title}
-		>
-	</div>
+		<div class="form-control">
+			<label for="price" class="label">File</label>
+			<input bind:value={product.file} type="text" name="file" class="input input-bordered">
+		</div>
 
-	<div class="form-control">
-		<label for="price" class="label">Price</label>
-		<input bind:value={product.price} type="text" name="price" class="input input-bordered">
-	</div>
+		<div class="form-control">
+			<label for="title" class="label">Title</label>
+			<input 
+				type="text" 
+				name="title" 
+				class="input input-bordered" 
+				bind:value={product.title}
+				on:input={setSlug}
+			>
+			{#if product.slug}
+				<div class="text-sm text-green-500">
+					payroad.click/{product.slug}
+				</div>
+			{/if}
+		</div>
 
-	<div class="">
-		<label for="description" class="label">Description</label>
-		<Tiptap bind:content={product.description}/>
-	</div>
+		<div class="form-control">
+			<label for="price" class="label">Price</label>
+			<input bind:value={product.price} type="text" name="price" class="input input-bordered">
+		</div>
+
+		<div class="">
+			<label for="content" class="label">Content</label>
+			<Tiptap bind:content={product.content}/>
+		</div>
 
 
-	<div class="!mt-12">
-		<button class="btn btn-primary btn-lg">
-			&check; Save
-		</button>
-		<a href="/products" class="btn btn-link btn-lg ">
-			Products &rarr;
-		</a>
-	</div>
+		<div class="!mt-12">
+			<button class="btn btn-primary btn-lg">
+				&check; Save
+			</button>
+			<a href="/products" class="btn btn-link btn-lg ">
+				Products &rarr;
+			</a>
+		</div>
 
 
-</form>
+	</form>
+</div>

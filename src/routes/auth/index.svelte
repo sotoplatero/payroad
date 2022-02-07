@@ -10,6 +10,7 @@
 </script>
 <script lang="ts">
     // import { tick } from 'svelte'
+    import {user} from '$lib/stores/user'    
     import { auth } from '$lib/supabase'
     import Seo from '$lib/components/SEO.svelte'
     import { handleAlert } from '$lib/alert'
@@ -54,7 +55,7 @@
     </div>
 
     <div class="mt-6">
-        <button type="submit" class="btn w-full flex items-center ">
+        <button type="submit" class="btn btn-success w-full flex items-center ">
             {#if loading}
                 <Spinner class="mr-2"/>
             {/if}

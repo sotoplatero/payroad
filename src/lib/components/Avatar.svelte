@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { fromBucket } from '$lib/supabase'
+    import { bucket } from '$lib/supabase'
     export let src
     export let email
 
@@ -12,14 +12,14 @@
         const fileName = `${Date.now()}.${fileExt}`
         const filePath = `${fileName}`
 
-        let { error: uploadError } = await fromBucket('avatars').upload(filePath, file)
+        let { error: uploadError } = await bucket('avatars').upload(filePath, file)
         if (uploadError) { throw uploadError }
         return {filePath}
         // return await from('profiles').upsert({ avatar_url: filePath })
     }
 
     const getAvatar = async(url: string) => {
-        const { data, error: downloadError } = await fromBucket('avatars').download(url)
+        const { data, error: downloadError } = await bucket('avatars').download(url)
         if (downloadError) { throw downloadError }
 
         return URL.createObjectURL(data)
