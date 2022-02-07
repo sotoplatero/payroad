@@ -7,7 +7,6 @@
 
     async function signOut(){
         await auth.signOut()
-        goto('/')
     }
 
     // $: console.log($user)

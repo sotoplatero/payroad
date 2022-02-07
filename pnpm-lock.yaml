@@ -46,7 +46,7 @@ dependencies:
 devDependencies:
   '@supabase/supabase-js': 1.29.4
   '@sveltejs/adapter-auto': 1.0.0-next.17
-  '@sveltejs/kit': 1.0.0-next.259_svelte@3.46.3
+  '@sveltejs/kit': 1.0.0-next.260_svelte@3.46.3
   '@tailwindcss/aspect-ratio': 0.4.0_tailwindcss@3.0.18
   '@tailwindcss/line-clamp': 0.3.1_tailwindcss@3.0.18
   '@tailwindcss/typography': 0.5.1_tailwindcss@3.0.18
@@ -254,8 +254,8 @@ packages:
       esbuild: 0.13.15
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.259_svelte@3.46.3:
-    resolution: {integrity: sha512-+Tss6cQXmpi4Jno/ZP0zJ3INBLMED+WeW4UI81tmexheC76Y2p+cbInneKO/REx/8QFo1iroYrWAUkZPsOg8Ew==}
+  /@sveltejs/kit/1.0.0-next.260_svelte@3.46.3:
+    resolution: {integrity: sha512-0EEkGD0BpZdgRm9UoOnldS8iDFFhT2ixN3oQ/9DblGKNo7cz/FEQmKoYYIOOVYI3XyurwccWORPEpTTA4l9Oew==}
     engines: {node: '>=14.13'}
     hasBin: true
     peerDependencies:
