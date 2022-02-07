@@ -1,13 +1,36 @@
 <script lang="ts">
-	import '../global.css';
-    import { navigating, page } from '$app/stores'
+	import {onMount} from 'svelte'
+    import { navigating, session } from '$app/stores'
+    import { goto } from '$app/navigation'
+    import {auth} from '$lib/supabase'
     import PageNavIndicator from '$lib/components/PageNavIndicator.svelte'
 	import Header from '$lib/components/Header.svelte'
 	import Footer from '$lib/components/Footer.svelte'
 	import AlertList from '$lib/alert/AlertList.svelte'
-    // import {user} from '$lib/stores/user'	
+	import '../global.css';
 
-	// $:console.log( $page )
+	onMount(async () => {
+	    auth.onAuthStateChange( async (event, _session) => {
+	        if (event == 'SIGNED_IN') {
+	            $session.user = _session.user 
+	            await setServerSession(_session);
+                goto('/products')
+	        }
+
+	        if (event == 'SIGNED_OUT') {
+	            $session.user = null 
+	            await setServerSession({});
+                goto('/auth')
+	        }
+	    })		
+	})
+
+	async function setServerSession( session ) {
+	    await fetch('/auth.json', {
+	        method: 'POST',
+	        body: JSON.stringify(session)
+	    })
+	}
 </script>
 
 {#if $navigating}

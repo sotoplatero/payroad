@@ -12,12 +12,12 @@ export async function get({ params }) {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json'},
 		body:  JSON.stringify({ 
-			 "name": "PayRoad",
+			 "name": "PAYROAD",
 			 "secret_key": key,
 			 "password": passMD5,
 			 "type": "all",
 			 "amount": 40,
-			 "order_id": "Order10001",
+			 "order_id": "Order" + Date.now(),
 			 "currency": "USD",
 			 "description": "Payment for t-shirt ALFAcoins size XXL",
 			 "options": {

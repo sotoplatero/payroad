@@ -8,6 +8,7 @@ export const slugify = (str) => {
 
     str = str
         .toLowerCase()
+        .trim()
         .replace(/\s+/g, '-') 
         .replace(/[^a-z0-9\s\-]/g, '')
         .replace(/-+/g, '-') 

@@ -2,7 +2,7 @@
     import { redirectToLogin } from '$lib/config/app'
 	export async function load({ url, fetch, session }) {
         const { user } = session
-        if (!user?.id) return redirectToLogin	
+        if (!user) return redirectToLogin	
         return { props: { user } }        	
 	}
 </script>
@@ -17,18 +17,8 @@
 	export let user
 	let product = {}
 
-	// let title = ''
-	// let price = ''
-	// let description = ''
-
-	// $: product = { title, price, description }
-
 	async function save() {
-		const {error} = await from('products').insert({ 
-			user_id: user.id, 
-			slug: slugify(product.title), 
-			data: product 
-		})
+		const {error} = await from('products').insert(product)
 		if (!error) {
 			goto('/products')
 		}
