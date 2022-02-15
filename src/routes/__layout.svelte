@@ -11,7 +11,7 @@
 
 	onMount(async () => {
 	    auth.onAuthStateChange( async (event, _session) => {
-	        if (event == 'SIGNED_IN') {
+	        if (event == 'SIGNED_IN' || event == 'TOKEN_REFRESHED') {
 	            $session.user = _session.user 
 	            await setServerSession(_session);
                 goto('/products')

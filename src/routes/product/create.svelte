@@ -3,6 +3,7 @@
 	export async function load({ url, fetch, session }) {
         const { user } = session
         if (!user) return redirectToLogin	
+
         return { props: { user } }        	
 	}
 </script>

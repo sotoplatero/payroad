@@ -26,7 +26,7 @@
 	<picture>
 		<img src="#" alt={product.title}>
 	</picture>
-	<div class="prose prose-lg mx-auto" >
+	<div  >
 		<h1 class="mt-16">{product.title}</h1>
 		<div class="text-center">
 			<button class="btn btn-primary text-xl" on:click={()=>showOrder=!showOrder}>
@@ -34,7 +34,10 @@
 				I want it
 			</button>
 		</div>
-		{@html product.content}
+		<div class="prose prose-lg mx-auto">
+			{@html product.content}
+			
+		</div>
 	</div>
 </article>
-<Order bind:show={showOrder} {product}/>
+<Order {product} bind:show={showOrder}/>

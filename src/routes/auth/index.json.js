@@ -2,7 +2,7 @@ import { serialize } from 'cookie'
 
 export async function post({ request }) {
 
-  const { expires_at, access_token = '' } = await request.json()
+  const { expires_at, access_token = '', refresh_token } = await request.json()
   // const expires = expires_at ? new Date(expires_at * 1000).toUTCString() : 0
   // const expiresOrMaxAge = expires ? `Expires=${expires}` : `Max-Age=0`
   // const secure = process.env.NODE_ENV === 'production' ? 'Secure;', ''
@@ -15,8 +15,6 @@ export async function post({ request }) {
           maxAge: !!expires_at ? undefined : 0,
       })
   
-  console.log(cookie)
-
   return {
     headers: {
 			'set-cookie': cookie  

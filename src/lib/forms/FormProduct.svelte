@@ -1,4 +1,5 @@
 <script>
+	import {onMount} from 'svelte'
 	import { from } from '$lib/supabase'
 	import {kebabCase,debounce} from 'lodash'
 	// import { slugify } from '$lib/utils/slugify'
@@ -6,9 +7,15 @@
 	import Tiptap from '$lib/components/Tiptap.svelte'	
 
 	export let product = { }
+	let fees = []
 
 	$: product.user_id = $session.user.id
 	$: product = product
+
+	onMount(async () => {
+        const res = await fetch('https://www.alfacoins.com/api/fees.json')
+    	fees = await res.json()
+	})
 
 	const setSlug = debounce( 
 		async e => {
@@ -28,12 +35,12 @@
 	<form on:submit|preventDefault class="card-body space-y-4">
 
 		<div class="form-control">
-			<label for="price" class="label">File</label>
+			<label for="price" class="label-text">File</label>
 			<input bind:value={product.file} type="text" name="file" class="input input-bordered">
 		</div>
 
 		<div class="form-control">
-			<label for="title" class="label">Title</label>
+			<label for="title" class="label-text">Title</label>
 			<input 
 				type="text" 
 				name="title" 
@@ -49,12 +56,12 @@
 		</div>
 
 		<div class="form-control">
-			<label for="price" class="label">Price</label>
+			<label for="price" class="label-text">Price</label>
 			<input bind:value={product.price} type="text" name="price" class="input input-bordered">
 		</div>
 
 		<div class="">
-			<label for="content" class="label">Content</label>
+			<label for="content" class="label-text">Content</label>
 			<Tiptap bind:content={product.content}/>
 		</div>
 
