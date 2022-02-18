@@ -17,9 +17,22 @@
 </script>
 
 <script>
+	import {goto} from '$app/navigation'
 	import Order from '$lib/components/Order.svelte'
 	export let product
 	let showOrder = false
+
+	async function handleInvoice(){
+		const { price, title} = product
+		const res = await fetch('/invoice/alfacoins.json', {
+			method: 'POST',
+		    headers: {'Content-Type': 'application/json' },			
+			body: JSON.stringify({ price, title })
+		})
+
+		const order = await res.json()
+		// goto(order)
+	}
 </script>
 
 <article class="bg-white">
@@ -29,7 +42,7 @@
 	<div  >
 		<h1 class="mt-16">{product.title}</h1>
 		<div class="text-center">
-			<button class="btn btn-primary text-xl" on:click={()=>showOrder=!showOrder}>
+			<button class="btn btn-primary text-xl" on:click={handleInvoice}>
 				<span class="font-black mr-4">$ {product.price}</span >
 				I want it
 			</button>
@@ -40,4 +53,3 @@
 		</div>
 	</div>
 </article>
-<Order {product} bind:show={showOrder}/>

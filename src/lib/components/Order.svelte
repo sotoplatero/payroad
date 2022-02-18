@@ -38,7 +38,11 @@
 		<div class="rounded-xl py-6 px-8 bg-white w-full max-w-md mx-auto space-y-3 shadow">
 			<h2 class="text-center text-xl sm:text-2xl font-bold">{product.title}</h2>
 			{#if order}
-				<iframe src={order.iframe} sandbox="allow-scripts allow-forms" class="w-full h-96"></iframe>
+				<iframe 
+					src={order.iframe} 
+					sandbox="allow-scripts allow-forms" 
+					allowfullscreen
+					class="w-full h-96"></iframe>
 			{:else}
 				<div class="form-control">
 					<label for="email" class="label-text">Email</label>

@@ -7,7 +7,7 @@ const pass = process.env.ALFACOINS_PASS;
 export async function post({ request }) {
 
 	const passMD5 = crypto.createHash('md5').update(pass).digest("hex").toUpperCase();
-	const { price, email, title, currency } = await request.json()
+	const { price, email , title, currency = 'bitcoin' } = await request.json()
 
 	// const urlLimits = 'https://www.alfacoins.com/api/limits.json?base=USD'
 	// const limits = await fetch(urlLimits).then(res=>res.json())
